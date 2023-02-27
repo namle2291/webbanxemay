@@ -27,7 +27,7 @@
                 <tr>
                     <td>{{$item->id}}</td>
                     <td class="d-flex">
-                        <img src="/storage/post/{{$item->image}}" class="rounded border border-1" width="150" alt="">
+                        <img src="/storage/post/{{$item->image}}" width="150" style="object-fit: cover;" class="rounded border border-1"  alt="">
                         <div class="content ms-3">
                             <p>{{$item->title}}</p>
                             <p class="text-secondary" style="font-size: 13px;">{{$item->description}}</p>

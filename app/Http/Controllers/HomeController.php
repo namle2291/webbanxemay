@@ -63,10 +63,11 @@ class HomeController extends Controller
     {
         if ($id) {
             $product = Product::where('categoryId', $id)->get();
-        } else {
-            $product = Product::orderByDesc('id')->get();
+            return view('product')->with(['product' => $product]);
+        }else{
+            $category =  Category::all();
+            return view('product',compact('category'));
         }
-        return view('product')->with(['product' => $product]);
     }
     function contact()
     {

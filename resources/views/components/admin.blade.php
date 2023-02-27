@@ -23,7 +23,48 @@
 
     <link rel="stylesheet" href="/awesome-notifications/style.css" />
     <link rel="stylesheet" href="/css/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var maxField = 10; //Input fields increment limitation
+            var addButton = $('.add_button'); //Add button selector
+            var wrapper = $('.field_wrapper'); //Input field wrapper
+            var fieldHTML = `<div class="d-flex justify-content-between align-items-center">
+                        <div class="form-group" style="width: 30%;">
+                            <label class="form-label">Màu sắc</label>
+                            <input type="text" class="form-control" placeholder="VD: Đen - Trắng" name="color[]" />
+                        </div>
+                        <div class="form-group" style="width: 30%;">
+                            <label class="form-label">Tồn kho</label>
+                            <input type="number" class="form-control" placeholder="VD: 50" name="stock[]" />
+                        </div>
+                        <div class="form-group" style="width: 30%;">
+                            <label class="form-label">Hình ảnh</label>
+                            <input type="file" class="form-control" name="image[]" />
+                        </div>
+                        <a href="javascript:void(0);" class="add_button ms-1" title="Add field"><i
+                                class="fas fa-plus"></i></a>
+                    </div>`; //New input field html 
+            var x = 1; //Initial field counter is 1
+            
+            //Once add button is clicked
+            $(addButton).click(function(){
+                //Check maximum number of input fields
+                if(x < maxField){ 
+                    x++; //Increment field counter
+                    $(wrapper).append(fieldHTML); //Add field html
+                }
+            });
+            
+            //Once remove button is clicked
+            $(wrapper).on('click', '.remove_button', function(e){
+                e.preventDefault();
+                $(this).parent('div').remove(); //Remove field html
+                x--; //Decrement field counter
+            });
+        });
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -70,8 +111,8 @@
                 <div class="sidebar">
                     <!-- Sidebar user (optional) -->
                     <div class="mt-3 ms-3 pb-3 mb-3 d-flex align-items-center">
-                        <img src="/storage/avatar/{{ Auth::user()->avatar ?? 'default.png' }}" class="rounded-circle shadow-sm"
-                            width="40" height="40">
+                        <img src="/storage/avatar/{{ Auth::user()->avatar ?? 'default.png' }}"
+                            class="rounded-circle shadow-sm" width="40" height="40">
                         <span class="ms-2 fw-bold text-light">
                             {{ Auth::user()->fullname ?? 'Lensko' }}
                         </span>

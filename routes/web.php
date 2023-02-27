@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AttributesController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CarBrandController;
 use App\Http\Controllers\CartController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\OrderStatusController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductAttributesController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -108,6 +110,11 @@ Route::prefix('admin')->group(function () {
     // Danh mục
     Route::prefix('categories')->middleware('auth')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('admin.category');
+    });
+    // Thuộc tính sản phẩm
+    Route::prefix('attributes')->middleware('auth')->group(function () {
+        Route::get('/add/{id?}', [ProductAttributesController::class, 'add'])->name('admin.attribute.add');
+        Route::post('/store', [ProductAttributesController::class, 'store'])->name('admin.attribute.store');
     });
     // Hãng xe
     Route::prefix('brands')->middleware('auth')->group(function () {

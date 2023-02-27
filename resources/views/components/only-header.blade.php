@@ -27,7 +27,8 @@
                     <div id="nav_bar_mobile">
                         <label for="menu_toggle" class="text-end text-danger d-block mx-2 fs-3"><i
                                 class="fas fa-times"></i></label>
-                        <form id="form_search" class="d-flex justify-content-center mt-3" action="{{route('home.search')}}">
+                        <form id="form_search" class="d-flex justify-content-center mt-3"
+                            action="{{route('home.search')}}">
                             <input placeholder="Bạn cần tìm gì?" name="key" id="input_search" type="text">
                             <button id="btn_search"><i class="fas fa-search"></i></button>
                         </form>
@@ -43,6 +44,9 @@
                                     THIỆU</a></li>
                             <li class="my-3 border-bottom pb-2"><a class="text-decoration-none text-dark" href="">LIÊN
                                     HỆ</a></li>
+                            <li class="me-3"><a class="text-light text-decoration-none" href="{{route('home.news')}}"><i
+                                        class="fas fa-earth"></i>
+                                    TIN TỨC</a></li>
                         </ul>
                         <label for="menu_toggle">
                             <div class="overlay"></div>
@@ -76,7 +80,8 @@
                                 </button>
                                 <div class="dropdown_account">
                                     <ul class="m-0 p-0" style="list-style: none;">
-                                        <li><a class="text-secondary" href="{{route('home.info')}}"><i class="fas fa-info-circle"></i> Thông
+                                        <li><a class="text-secondary" href="{{route('home.info')}}"><i
+                                                    class="fas fa-info-circle"></i> Thông
                                                 tin</a></li>
                                         <li class="mt-2"><a class="text-secondary" href="{{route('home.logout')}}"><i
                                                     class="fas fa-sign-out"></i> Đăng xuất</a></li>
@@ -113,17 +118,20 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="d-none d-lg-flex m-0 px-0 py-2" style="list-style: none;">
-                        <li class="me-3 border-end pe-3"><a class="text-light text-decoration-none" href="{{route('home')}}"><i
-                                    class="fas fa-home"></i> TRANG
+                        <li class="me-3 border-end pe-3"><a class="text-light text-decoration-none"
+                                href="{{route('home')}}"><i class="fas fa-home"></i> TRANG
                                 CHỦ</a></li>
-                        <li class="me-3 border-end pe-3"><a class="text-light text-decoration-none" href="{{route('home.about')}}"><i
-                                    class="fas fa-seedling"></i> GIỚI
+                        <li class="me-3 border-end pe-3"><a class="text-light text-decoration-none"
+                                href="{{route('home.about')}}"><i class="fas fa-seedling"></i> GIỚI
                                 THIỆU</a></li>
-                        <li class="me-3 border-end pe-3"><a class="text-light text-decoration-none" href="{{route('home.product')}}"><i
-                                    class="fas fa-shopping-basket"></i> SẢN PHẨM</a>
+                        <li class="me-3 border-end pe-3"><a class="text-light text-decoration-none"
+                                href="{{route('home.product')}}"><i class="fas fa-shopping-basket"></i> SẢN PHẨM</a>
                         </li>
                         <li class="me-3"><a class="text-light text-decoration-none" href=""><i class="fas fa-phone"></i>
                                 LIÊN HỆ</a></li>
+                        <li class="me-3"><a class="text-light text-decoration-none" href="{{route('home.news')}}"><i
+                                    class="fas fa-earth"></i>
+                                TIN TỨC</a></li>
                     </ul>
                 </div>
             </div>
@@ -132,6 +140,7 @@
     <section>
         <div class="container">
             <div class="row">
+                @include('sweetalert::alert')
                 {{$slot}}
             </div>
         </div>
@@ -140,17 +149,19 @@
         <div style="background-color: var(--red);" class="d-none d-lg-block">
             <div class="row py-4 m-0">
                 <div class="d-flex align-items-center justify-content-center">
-                    <p class="text-light">Trả góp lãi suất ưu đãi <strong class="text-warning fs-2">0%</strong> tại quầy thu ngân, thủ tục đơn giản!
+                    <p class="text-light">Trả góp lãi suất ưu đãi <strong class="text-warning fs-2">0%</strong> tại quầy
+                        thu ngân, thủ tục đơn giản!
                     </p>
-                    <a href="" class="mx-5 text-decoration-none text-light rounded-5 btn btn-outline-light"><i class="fas fa-search"></i> Xem Ngay</a>
+                    <a href="" class="mx-5 text-decoration-none text-light rounded-5 btn btn-outline-light"><i
+                            class="fas fa-search"></i> Xem Ngay</a>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row py-4">
                 <div class="col-lg-2 col-6 col-md-4">
-                    <img width="200" class="img-thumbnail" src="http://xedien.langsonweb.com/wp-content/uploads/2020/06/logo-xedien.png"
-                        alt="" id="logo">
+                    <img width="200" class="img-thumbnail"
+                        src="http://xedien.langsonweb.com/wp-content/uploads/2020/06/logo-xedien.png" alt="" id="logo">
                 </div>
                 <div class="col-lg-2 col-6 col-md-4 mb-3">
                     <ul class="m-0 p-0" style="list-style: none; font-size: 14px;">

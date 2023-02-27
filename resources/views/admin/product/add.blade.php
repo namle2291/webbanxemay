@@ -42,16 +42,14 @@
                                 <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
-                        <x-input name="weight" label="Cân nặng" />
-                        <x-input name="height" label="Chiều cao" />
-                        <x-input name="capacity" label="Dung tích bình xăng" />
-                        <x-input name="cilinder" label="Dung tích xy lanh" />
+                        <x-input name="weight" placeholder="VD: 100kg" label="Cân nặng" />
+                        <x-input name="height" placeholder="VD: 1000mm" label="Chiều cao" />
+                        <x-input name="capacity" placeholder="VD: 4,5 lít" label="Dung tích bình xăng" />
+                        <x-input name="cilinder" placeholder="VD: 109cc" label="Dung tích xy lanh" />
                     </div>
                     <div class="col-lg-6">
                         <x-input name="price" type="number" label="Giá" />
-                        <x-input name="discountPrice" type="number" label="Giảm giá (%)" />
                         <x-input name="inStock" type="number" label="Số lượng" />
-                        {{-- <x-input name="color" label="Màu sắc" /> --}}
                         <x-input name="image" id="fileImageProduct" type="file" label="Hình ảnh" />
                         <img src="" id="imageProduct" width="100" alt="">
                     </div>

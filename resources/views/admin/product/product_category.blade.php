@@ -21,41 +21,35 @@
             </form>
         </div>
     </div>
-    <table class="table shadow mt-2">
+    <table class="table shadow mt-2" id="vueDataProduct">
         <thead class="bg-info text-light">
             <tr>
                 <th>#</th>
                 <th>Tên</th>
-                <th>Hình ảnh</th>
+                <th>Thuộc tính</th>
                 <th>Giá</th>
-                <th>Giảm giá</th>
-                <th>Tồn kho</th>
+                <th>Số lượng</th>
                 <th>Danh mục</th>
+                <th>Hãng xe</th>
                 <th>Chức năng</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($product as $item)
                 <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->name }}</td>
+                    <td>
+                        {{ $item->id }}
+                    </td>
                     <td>
                         <img src="/storage/images/{{ $item->image }}" width="80" class="shadow-sm rounded"
                             alt="" />
+                        <span>{{ $item->name }}</span>
                     </td>
-                    @if ($item->discountPrice)
-                        <td>
-                            <span>{{ number_format($item->price - ($item->price * $item->discountPrice) / 100) }}
-                                <sup>đ</sup></span> <br>
-                            <span style="text-decoration: line-through;"
-                                class="text-danger">{{ number_format($item->price) }} <sup>đ</sup></span>
-                        </td>
-                    @else
-                        <td>{{ number_format($item->price) }} <sup>đ</sup></td>
-                    @endif
-                    <td>{{ number_format($item->discountPrice) }} %</td>
+                    <td><a href="{{route('admin.attribute.add',$item->id)}}" class="btn btn-sm btn-outline-success">Thêm thuộc tính</a></td>
+                    <td class="text-danger fw-bold">{{ number_format($item->price) }} VND</td>
                     <td>{{ $item->inStock ?? 0 }}</td>
                     <td>{{ $item->category->name }}</td>
+                    <td>{{ $item->brand->name }}</td>
                     <td>
                         <a href="{{ route('admin.product.edit', $item->id) }}" class="btn btn-sm btn-warning shadow">
                             Sửa

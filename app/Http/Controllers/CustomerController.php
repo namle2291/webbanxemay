@@ -72,19 +72,20 @@ class CustomerController extends Controller
     function register_store(Request $request)
     {
         $data = $request->all();
-        $validator = Validator::make($data, [
+        
+        $this->customValidator($data, [
             'fullName' => 'required',
             'email' => 'required|email',
             'phone' => 'required|numeric',
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password',
-        ], [], [
+        ],[
             'fullName' => 'Họ tên',
             'email' => 'Email',
             'phone' => 'Số điện thoại',
             'password' => 'Mật khẩu',
             'confirm_password' => 'Nhập lại mật khẩu',
-        ])->validate();
+        ]);
 
         unset($data['_token']);
         unset($data['confirm_password']);

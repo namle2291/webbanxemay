@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3721/3721619.png">
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -27,7 +27,8 @@
                     <div id="nav_bar_mobile">
                         <label for="menu_toggle" class="text-end text-danger d-block mx-2 fs-3"><i
                                 class="fas fa-times"></i></label>
-                        <form id="form_search" class="d-flex justify-content-center mt-3" action="{{route('home.search')}}" method="GET">
+                        <form id="form_search" class="d-flex justify-content-center mt-3"
+                            action="{{route('home.search')}}" method="GET">
                             <input placeholder="Bạn cần tìm gì?" name="key" id="input_search" type="text">
                             <button id="btn_search"><i class="fas fa-search"></i></button>
                         </form>
@@ -43,6 +44,9 @@
                                     THIỆU</a></li>
                             <li class="my-3 border-bottom pb-2"><a class="text-decoration-none text-dark" href="">LIÊN
                                     HỆ</a></li>
+                            <li class="me-3"><a class="text-light text-decoration-none" href="{{route('home.news')}}"><i
+                                        class="fas fa-earth"></i>
+                                    TIN TỨC</a></li>
                         </ul>
                         <label for="menu_toggle">
                             <div class="overlay"></div>
@@ -56,7 +60,8 @@
                 </div>
                 <!-- Search -->
                 <div class="col-lg-4 d-none d-lg-block">
-                    <form id="form_search" class="d-flex justify-content-center" action="{{route('home.search')}}" method="GET">
+                    <form id="form_search" class="d-flex justify-content-center" action="{{route('home.search')}}"
+                        method="GET">
                         <input placeholder="Bạn cần tìm gì?" name="key" id="input_search" type="text">
                         <button id="btn_search"><i class="fas fa-search"></i></button>
                     </form>
@@ -125,6 +130,9 @@
                         </li>
                         <li class="me-3"><a class="text-light text-decoration-none" href=""><i class="fas fa-phone"></i>
                                 LIÊN HỆ</a></li>
+                        <li class="me-3"><a class="text-light text-decoration-none" href="{{route('home.news')}}"><i
+                                    class="fas fa-earth"></i>
+                                TIN TỨC</a></li>
                     </ul>
                 </div>
             </div>
@@ -207,11 +215,11 @@
                                     @if ($post->count()>0)
                                     @foreach ($post as $item)
                                     <li class="post_item py-2 border-bottom d-flex align-items-center">
-                                        <img width="40" height="40" src="{{asset('/storage/post/'.$item->image)}}"
-                                            alt="">
+                                        <img width="60" height="60" class="img-thumbnail border-0"
+                                            src="{{asset('/storage/post/'.$item->image)}}" alt="">
                                         <div class="ms-2">
                                             <a class="post_link text-decoration-none text-dark" style="font-size: 15px;"
-                                                href="">{{$item->title}}</a>
+                                                href="{{route('home.new_detail',$item->id)}}">{{$item->title}}</a>
                                         </div>
                                     </li>
                                     @endforeach
@@ -231,12 +239,12 @@
                                     @if ($new_product->count()>0)
                                     @foreach ($new_product as $item)
                                     <li class="product_item py-2 border-bottom d-flex align-items-center">
-                                        <img width="60" height="60" class="img-thumbnail border-0" src="{{asset('/storage/images/'.$item->image)}}"
-                                            alt="">
+                                        <img width="60" height="60" class="img-thumbnail border-0"
+                                            src="{{asset('/storage/images/'.$item->image)}}" alt="">
                                         <div class="ms-2">
                                             <a class="post_link text-decoration-none text-dark" style="font-size: 15px;"
                                                 href="">{{$item->name}}</a> <br>
-                                            <span class="text-danger fw-bold">46.160.000 VND</span>
+                                            <span class="text-danger fw-bold">{{number_format($item->price)}} VND</span>
                                         </div>
                                     </li>
                                     @endforeach
@@ -256,6 +264,7 @@
                             <div class="col-lg-12">
                                 <h6 class="content_heading py-2 bg-light">SẢN PHẨM BÁN CHẠY</h6>
                             </div>
+                            @include('sweetalert::alert')
                             {{$slot}}
                         </div>
                     </div>
