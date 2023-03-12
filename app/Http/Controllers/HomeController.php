@@ -26,8 +26,15 @@ class HomeController extends Controller
     function index()
     {
         $firstCategory = Category::first();
-        $new_product = Product::orderByDesc('id')->take(5)->get();
-        return view('welcome', compact('new_product', 'firstCategory'));
+        $new_product = Product::orderByDesc('id')->take(8)->get();
+        $top_products = DB::table('products')
+            ->join('order_details', 'products.id', '=', 'order_details.id_product')
+            ->selectRaw('products.id,products.name,products.image,products.price')
+            ->orderByDesc('quantity')
+            ->take(8)
+            ->get();
+
+        return view('welcome', compact('new_product', 'firstCategory', 'top_products'));
     }
     function search(Request $request)
     {
@@ -64,9 +71,9 @@ class HomeController extends Controller
         if ($id) {
             $product = Product::where('categoryId', $id)->get();
             return view('product')->with(['product' => $product]);
-        }else{
+        } else {
             $category =  Category::all();
-            return view('product',compact('category'));
+            return view('product', compact('category'));
         }
     }
     function contact()
@@ -161,7 +168,6 @@ class HomeController extends Controller
             'email' => $data['email'],
             'address' => $data['address'],
             'phone' => $data['phone'],
-            'note' => $data['note'],
             'total' => $cart->total_price,
             'id_status' => $order_status_first,
             'id_customer' => Auth::guard('customer')->user()->id,

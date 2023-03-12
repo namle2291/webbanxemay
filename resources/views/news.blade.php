@@ -17,7 +17,7 @@
                             <a href="{{ route('home.new_detail', $item->id) }}" class="text-dark">
                                 <h6>{{ $item->title }}</h6>
                             </a>
-                            <span style="font-size: 10px;"><i class="fas fa-clock"></i> {{ $item->created_at }}</span>
+                            <span style="font-size: 12px;"><i class="fas fa-clock"></i> {{ $item->created_at }} - {{$item->comment->count()}} bình luận</span>
                             <p>{{ $item->description }}</p>
                         </div>
                     </div>

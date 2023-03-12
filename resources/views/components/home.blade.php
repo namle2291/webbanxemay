@@ -7,18 +7,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3721/3721619.png">
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="{{asset('/home/css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 </head>
 
 <body>
+    <span class="back-to-top">
+        <i class="fas fa-chevron-circle-up"></i>
+    </span>
     <header>
         <div class="container">
-            <div class="row d-flex align-items-center py-2">
+            <div class="row d-flex align-items-center py-2 header_box">
                 <!-- Button Bars -->
                 <div class="col-4 d-lg-none">
                     <label for="menu_toggle"><i class="fas fa-bars fs-5"></i></label>
@@ -55,8 +63,8 @@
                 </div>
                 <!-- Logo -->
                 <div class="col-lg-4 col-4">
-                    <img width="200" class="img-thumbnail border-0"
-                        src="http://xedien.langsonweb.com/wp-content/uploads/2020/06/logo-xedien.png" alt="" id="logo">
+                    <img class="img-thumbnail border-0" width="200"
+                        src="http://xedien.langsonweb.com/wp-content/uploads/2020/06/logo-xedien.png" alt="">
                 </div>
                 <!-- Search -->
                 <div class="col-lg-4 d-none d-lg-block">
@@ -81,11 +89,12 @@
                                 </button>
                                 <div class="dropdown_account">
                                     <ul class="m-0 p-0" style="list-style: none;">
-                                        <li><a class="text-secondary" href="{{route('home.info')}}"><i
-                                                    class="fas fa-info-circle"></i> Thông
+                                        <li class="border-bottom"><a class="text-dark fs-6"
+                                                href="{{route('home.info')}}"><i class="fas fa-info-circle"></i> Thông
                                                 tin</a></li>
-                                        <li class="mt-2"><a class="text-secondary" href="{{route('home.logout')}}"><i
-                                                    class="fas fa-sign-out"></i> Đăng xuất</a></li>
+                                        <li class="border-bottom mt-2"><a class="text-dark fs-6"
+                                                href="{{route('home.logout')}}"><i class="fas fa-sign-out"></i> Đăng
+                                                xuất</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -100,11 +109,12 @@
                             </li>
                             @endif
                             <li class="ms-3">
-                                <a id="btn_cart" class="btn btn-danger rounded-0 text-decoration-none" href="">
+                                <a id="btn_cart" class="btn btn-danger rounded-0 text-decoration-none"
+                                    href="{{route('home.giohang')}}">
                                     <span class="d-none d-lg-block">Giỏ Hàng <i class="fas fa-shopping-cart"></i>
-                                        <sup>[0]</sup></span>
+                                        <sup>[{{$cart->total_quantity}}]</sup></span>
                                     <span class="d-lg-none d-md-block">
-                                        <i class="fas fa-shopping-cart"></i> <sup>[0]</sup>
+                                        <i class="fas fa-shopping-cart"></i> <sup>[$cart->total_quantity]</sup>
                                     </span>
                                 </a>
                             </li>
@@ -342,16 +352,16 @@
                     <ul class="m-0 p-0" style="list-style: none; font-size: 14px;">
                         <h6 class="text-danger fw-bold">Cửa hàng</h6>
                         <li>
-                            <a href="" class="text-decoration-none text-secondary">Địa chỉ: 335 Cầu Giấy</a>
+                            <a href="" class="text-decoration-none text-secondary">Địa chỉ: Cần Thơ</a>
                         </li>
                         <li>
                             <a href="" class="text-decoration-none text-secondary">Điện thoại: 0123 456 7890</a>
                         </li>
                         <li>
-                            <a href="" class="text-decoration-none text-secondary">Email: topweb.com.vn@gmail.com</a>
+                            <a href="" class="text-decoration-none text-secondary">Email: nhattruong@gmail.com</a>
                         </li>
                         <li>
-                            <a href="" class="text-decoration-none text-secondary">Website: topweb.com.vn</a>
+                            <a href="" class="text-decoration-none text-secondary">Website: nhattruong.com.vn</a>
                         </li>
                     </ul>
                 </div>

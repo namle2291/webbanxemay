@@ -14,15 +14,14 @@ class CartHelper
         $this->total_quantity = $this->get_total_quantity();
         $this->total_price = $this->get_total_price();
     }
-    public function add($product, $quantity = 1)
+    public function add($product, $quantity = 1, $color)
     {
         $item = [
             'id' => $product->id,
             'name' => $product->name,
             'image' => $product->image,
             'price' => $product->price,
-            'categoryId' => $product->categoryId,
-            'discountPrice' => $product->discountPrice,
+            'color'=>$color,
             'quantity' => $quantity ?? 1,
         ];
         // nếu trong đơn hàng đã có sản phẩm

@@ -30,7 +30,7 @@ class home extends Component
         $category = Category::all();
         $banner = Banner::all();
         $post = Post::orderByDesc('id')->get();
-        $new_product = Product::orderByDesc('id')->take(5)->get();
+        $new_product = Product::orderByDesc('id')->take(8)->get();
         return view('components.home',compact(['category','banner','post','new_product']));
     }
 }

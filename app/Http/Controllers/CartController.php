@@ -19,7 +19,8 @@ class CartController extends Controller
         if ($product->discountPrice) {
             $product->price -= ($product->price * $product->discountPrice / 100);
         }
-        $cart->add($product, $request->quantity);
+        $cart->add($product, $request->quantity, $request->color);
+        toast()->success('Đã thêm vào giỏ hàng!');
         return back();
     }
     function update(CartHelper $cart, Request $request)

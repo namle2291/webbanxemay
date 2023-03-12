@@ -59,10 +59,10 @@ class AdminController extends Controller
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password',
         ], [], [
-            'fullName' => 'Name',
+            'fullName' => 'Họ tên',
             'email' => 'Email',
-            'password' => 'Passowrd',
-            'confirm_password' => 'Confirm Password',
+            'password' => 'Mật khẩu',
+            'confirm_password' => 'Nhập lại mật khẩu',
         ])->validate();
 
         unset($data['confirm_password']);

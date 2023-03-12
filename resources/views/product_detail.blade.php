@@ -18,20 +18,25 @@
                             Tình trạng: {{ $product->inStock>0 ? "Còn hàng" : "Hết hàng" }}
                         </li>
                         <li class="my-3">
-                            Màu sắc:
-                            <ul style="list-style: none;" class="d-flex m-0 p-0">
-                                @foreach ($product->attribute as $item)
-                                <li class="me-2">
-                                    <button data-image="{{$item->image}}"
-                                        class="btn btn-sm btn-outline-dark color-item">{{$item->color}}</button>
-                                </li>
-                                @endforeach
-                            </ul>
+
                         </li>
                         <li class="my-3">
-                            Số lượng:
                             <form action="{{ route('home.giohang.add', $product->id) }}">
-                                <input type="number" class="form-control w-25" min="1" value="1" name="quantity">
+                                @csrf
+                                <label class="form-label">Màu sắc:</label>
+                                @if ($product->attribute->count()>0)
+                                <select name="color" class="form-select" onchange="getColor()" id="select">
+                                    @foreach ($product->attribute as $item)
+                                    <option class="me-2" value="{{$item->image}}">
+                                        {{$item->color}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @else
+                                    <p>Đang cập nhật...</p>
+                                @endif
+                                <label for="">Số lượng:</label>
+                                <input type="number" class="form-control w-100" min="1" max="10" value="1" name="quantity">
                                 <button class="btn btn-sm btn-outline-danger mt-3"><i class="fas fa-shopping-cart"></i>
                                     Thêm vào
                                     giỏ
@@ -64,14 +69,12 @@
     </div>
     @section('script')
     <script>
-        let color_items = document.querySelectorAll('.color-item');
-        let product_image = document.querySelector('#product_image');
-        color_items.forEach(element => {
-           element.onclick = (e)=>{
-            let image = e.target.getAttribute('data-image');
-            product_image.src = '/storage/product_attr/' + image;
-           }
-        });
+        function getColor(){
+            let select = document.querySelector("#select").value;
+            let product_image = document.querySelector('#product_image');
+            product_image.src = '/storage/product_attr/' + select;
+        }
+
     </script>
     @endsection
 </x-only-header>

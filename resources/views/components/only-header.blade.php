@@ -6,16 +6,21 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('/home/css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 </head>
 
 <body>
+    <span class="back-to-top">
+        <i class="fas fa-chevron-circle-up"></i>
+    </span>
     <header>
         <div class="container">
             <div class="row d-flex align-items-center py-2">
@@ -99,11 +104,11 @@
                             </li>
                             @endif
                             <li class="ms-3">
-                                <a id="btn_cart" class="btn btn-danger rounded-0 text-decoration-none" href="">
+                                <a id="btn_cart" class="btn btn-danger rounded-0 text-decoration-none" href="{{route('home.giohang')}}">
                                     <span class="d-none d-lg-block">Giỏ Hàng <i class="fas fa-shopping-cart"></i>
-                                        <sup>[0]</sup></span>
+                                        <sup>[{{$cart->total_quantity}}]</sup></span>
                                     <span class="d-lg-none d-md-block">
-                                        <i class="fas fa-shopping-cart"></i> <sup>[0]</sup>
+                                        <i class="fas fa-shopping-cart"></i> <sup>[$cart->total_quantity]</sup>
                                     </span>
                                 </a>
                             </li>
@@ -249,7 +254,7 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
     @yield('script')
-    <script src="main.js"></script>
+    <script src="{{asset('/home/js/main.js')}}"></script>
 </body>
 
 </html>
